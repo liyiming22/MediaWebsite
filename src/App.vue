@@ -4,7 +4,7 @@
       <div class="container">
         <ul class="nav_left">
           <li><router-link to="/"><i class="fas fa-film"></i>我的资源</router-link></li>
-          <li><router-link to="/admin"><i class="fa fa-user"></i>管理</router-link></li>
+          <li><router-link to="/upload"><i class="fas fa-cloud-upload-alt"></i>上传</router-link></li>
         </ul>
         <ul class="nav_right">
           <li><router-link to="/"><i class="fas fa-sign-in-alt"></i>登录</router-link></li>
@@ -49,27 +49,27 @@
     width         : 8px;
   }
   .dotOne {
-    -webkit-animation : dotOneKeyframes 5s ease  infinite;
+    animation : dotOneKeyframes 5s ease  infinite;
     background        : #F9E610;
     position          : absolute;
     top               : 0;
     left              : 0;
   }
   .dotTwo {
-    -webkit-animation : dotTwoKeyframes 5s ease 0.4166666666666s infinite;
+    animation : dotTwoKeyframes 5s ease 0.4166666666666s infinite;
     background        : #EFDB06;
     position          : absolute;
     top               : 0;
     left              : 14px;
   }
   .dotThree {
-    -webkit-animation : dotThreeKeyframes 5s ease 0.83333333333s infinite;
+    animation : dotThreeKeyframes 5s ease 0.83333333333s infinite;
     background        : #DBC906;
     position          : absolute;
     top               : 14px;
     left              : 14px;
   }
-  @-webkit-keyframes dotOneKeyframes {
+  @keyframes dotOneKeyframes {
     0% {
       top  : 0;
       left : 0;
@@ -113,7 +113,7 @@
     100% {
     }
   }
-  @-webkit-keyframes dotTwoKeyframes {
+  @keyframes dotTwoKeyframes {
     0% {
       top  : 0;
       left : 14px;
@@ -157,7 +157,7 @@
     100% {
     }
   }
-  @-webkit-keyframes dotThreeKeyframes {
+  @keyframes dotThreeKeyframes {
     0% {
       top  : 14px;
       left : 14px;

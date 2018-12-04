@@ -2,9 +2,11 @@
   <div>
     <div class="medias">
       <div class="container">
-        <template v-for="media in mediaList">
-          <media-item :media="media"></media-item>
-        </template>
+        <div class="row">
+          <template v-for="media in mediaList">
+            <media-item :media="media"></media-item>
+          </template>
+        </div>
       </div>
     </div>
   </div>
@@ -31,7 +33,22 @@ export default {
           index: 2,
           image: 'https://product-1257171958.cos.ap-shanghai.myqcloud.com/product1.jpg',
           title: 'test2'
-        }
+        },
+        {
+          index: 3,
+          image: 'https://product-1257171958.cos.ap-shanghai.myqcloud.com/product1.jpg',
+          title: 'test1'
+        },
+        {
+          index: 4,
+          image: 'https://product-1257171958.cos.ap-shanghai.myqcloud.com/product1.jpg',
+          title: 'test1'
+        },
+        {
+          index: 5,
+          image: 'https://product-1257171958.cos.ap-shanghai.myqcloud.com/product1.jpg',
+          title: 'test1'
+        },
       ]
     }
   },
