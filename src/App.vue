@@ -7,7 +7,7 @@
           <li><router-link to="/upload"><i class="fas fa-cloud-upload-alt"></i>上传</router-link></li>
         </ul>
         <ul class="nav_right">
-          <li><router-link to="/"><i class="fas fa-sign-in-alt"></i>登录</router-link></li>
+          <li><router-link to="/"><i class="fas fa-star"></i>收藏夹</router-link></li>
         </ul>
       </div>
     </nav>

@@ -1,74 +1,108 @@
 <template>
   <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-    <div class="media-card">
-      <router-link :to="'/details/' + media.index" class="media-link">
-      <!-- <router-link to="/details" class="media-link"> -->
+    <div class="Media">
+      <router-link :to="'/details/'+media._id" class="media-link">
         <div class="media__image">
-          <img class="img-responsive" :src="media.image" alt="">
+          <img
+            class="img-responsive" :src="media.image" alt="">
         </div>
         <div class="media__description">
-          <div class="media__info">
-            <small>{{media.title}}</small>
+          <!-- <div class="media__info"> -->
             <h4>{{media.title}}</h4>
-          </div>
+          <!-- </div> -->
         </div>
       </router-link>
+      <div class="media__action">
+        <fav-button :media="media"></fav-button>
+        <del-button :media="media"></del-button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import FavButton from './FavButton.vue'
+import DelButton from './DelButton.vue'
 export default {
   name: 'media-item',
-  props: ['media']
+  props: ['media'],
+  components: {
+    'fav-button': FavButton,
+    'del-button': DelButton
+  }
 }
 </script>
 
 <style>
-  .media {
+  .Media {
     background: #FFF;
     margin-bottom: 30px;
-    margin-right: 10px;
     position: relative;
     overflow: hidden;
   }
 
+  .media .media__description,
+  .media .media__action {
+    transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) transform;
+  }
+
+  .media:hover .media__description {
+    transform: translateY(-40px);
+  }
+
+  .media:hover .media__action {
+    transform: none;
+  }
+
   .media-link {
     display: block;
-    color: #3d3d3d;
+    color: #3D3D3D;
   }
 
   .media-link:hover {
-    color: #3d3d3d;
+    color: #3D3D3D;
     text-decoration: none;
   }
 
-  .media .media__image {
-    width: 100%;
-    /* margin-left: auto; */
-    /* margin-right: auto; */
-  }
-
   .media__image img {
+    width: 100%;
+    height: 100%;
     display: block;
-    height: 225px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  /* .media__description {
+  .media__description {
     width: 100%;
     display: flex;
     padding: 20px 20px 15px;
     background: #FFF;
-  } */
+  }
 
-  /* .media__info {
+  .media__info {
     flex: 2;
-  } */
+  }
 
-  /* .media__description small {
+  .media__description small {
     color: #808080;
   }
+
   .media__description h4 {
     margin: 3px 0 5px 0;
+  }
+
+  /* .media__action {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    transform: translateY(100%);
   } */
+
+  .media__action button {
+    float: left;
+    border-radius: 0;
+    width: 50%;
+    display: block;
+  }
 </style>

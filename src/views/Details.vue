@@ -1,19 +1,28 @@
 <template>
   <div>
-    <media-details :media="media" :isAdding="true"></media-details>
+    <media-details :media="media"></media-details>
   </div>
 </template>
 
 <script>
-import mediaDetails from '@/components/MediaDetails.vue'
+import MediaDetails from '@/components/MediaDetails.vue'
 export default {
-  name: 'Details',
+  computed: {
+    media () {
+      return this.$store.getters.mediaById(3)
+    }
+  },
+  created () {
+    if (!this.media.title) {
+      this.$store.dispatch('mediaById', this.$route.params['id'])
+    }
+  },
   data () {
     return {
     }
   },
   components: {
-    'media-details': mediaDetails
+    'media-details': MediaDetails
   }
 }
 </script>
