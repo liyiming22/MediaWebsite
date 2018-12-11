@@ -17,9 +17,11 @@ export const mediaMutations = {
     console.log(state.showAnimation)
   },
 
-  [ALL_MEDIAS_SUCCESS] (state) {
+  [ALL_MEDIAS_SUCCESS] (state, medias) {
     state.showAnimation = false
     console.log("all success")
+    console.log(medias)
+    state.mediaList = medias
   },
 
   [ALL_MEDIAS_FAILURE] (state) {

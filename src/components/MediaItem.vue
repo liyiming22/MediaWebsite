@@ -4,12 +4,10 @@
       <router-link :to="'/details/'+media._id" class="media-link">
         <div class="media__image">
           <img
-            class="img-responsive" :src="media.image" alt="">
+            class="img-responsive" :src="media.imageURL" alt="">
         </div>
         <div class="media__description">
-          <!-- <div class="media__info"> -->
             <h4>{{media.title}}</h4>
-          <!-- </div> -->
         </div>
       </router-link>
       <div class="media__action">
