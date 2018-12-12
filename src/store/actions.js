@@ -4,7 +4,6 @@ import { API_BASE } from '../config'
 import {
   ALL_MEDIAS,
   ALL_MEDIAS_SUCCESS,
-  ALL_MEDIAS_FAILURE,
 
   MEDIA_BY_ID,
   MEDIA_BY_ID_SUCCESS
