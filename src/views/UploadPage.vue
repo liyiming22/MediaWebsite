@@ -28,10 +28,6 @@ export default {
   methods: {
     uploadFile (item) {
       let thisTitle = item.name
-      // thisTitle = thisTitle.slice(0, thisTitle.lastIndexOf('.'))
-      // thisImgURL = 'https://test-1257171958.cos.ap-shanghai.myqcloud.com/p2522880251.webp'
-      // thisDescription = 'test description'
-      // thisId = 9999
       this.model.title = thisTitle.slice(0, thisTitle.lastIndexOf('.'))
       this.model.imageURL = "https://test-1257171958.cos.ap-shanghai.myqcloud.com/p2522880251.webp"
       this.model.description = 'test description'
@@ -48,6 +44,7 @@ export default {
         function (err, data) {
           _this.model.mediaURL = 'https://' + data.Location
           console.log(_this.model)
+          _this.$store.dispatch('addMedia', _this.model)
         }
       )
     },

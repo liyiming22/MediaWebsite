@@ -12,15 +12,27 @@
       </div>
     </nav>
     <router-view></router-view>
-    <!-- <div class="overlay">
+    <div class="overlay" v-show="true">
       <div class="loading-spinner">
         <div class="dot dotOne"></div>
         <div class="dot dotTwo"></div>
         <div class="dot dotThree"></div>
       </div>
-    </div>     -->
+    </div>    
   </div>
 </template>
+
+<script>
+export default {
+  name: 'app',
+  computed: {
+    showAnimation () {
+      return this.$store.state.showAnimation
+    }
+  }
+}
+</script>
+
 
 <style>
 .overlay {
@@ -35,18 +47,15 @@
     position : absolute;
     top      : 50%;
     left     : 50%;
-    -webkit-transform : translateX(-50%) translateY(-50%);
-    -moz-transform : translateX(-50%) translateY(-50%);
-    transform : translateX(-50%) translateY(-50%);
   }
   .dot {
     background    : black;
     border-radius : 100%;
     color         : white;
+    width         : 8px;
     height        : 8px;
     line-height   : 8px;
     text-align    : center;
-    width         : 8px;
   }
   .dotOne {
     animation : dotOneKeyframes 5s ease  infinite;

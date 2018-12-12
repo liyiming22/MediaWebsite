@@ -8,10 +8,12 @@ import {
 
   REMOVE_MEDIA,
   REMOVE_MEDIA_SUCCESS,
-  REMOVE_MEDIA_FAILURE,
 
   REMOVE_FROM_FAVORITE,
-  ADD_TO_FAVORITE
+  ADD_TO_FAVORITE,
+
+  ADD_MEDIA,
+  ADD_MEDIA_SUCCESS
 }from './mutation-types'
 
 export const mediaMutations = {
@@ -55,5 +57,15 @@ export const mediaMutations = {
   [REMOVE_FROM_FAVORITE]: (state, id) => {
     const index = state.favorite.findIndex(fav => fav._id === id)
     state.favorite.splice(index, 1)
+  },
+
+  [ADD_MEDIA]: (state, newMedia) => {
+    state.showAnimation = true
+  },
+
+  [ADD_MEDIA_SUCCESS]: (state, newMedia) => {
+    console.log(newMedia)
+    state.showAnimation = false
+    state.mediaList.push(newMedia)
   }
 }
