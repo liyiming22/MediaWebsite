@@ -8,6 +8,7 @@ const mediaSchema = Schema({
   // _id: ObjectId,
   _id: String,
   title: String,
+  mediaURL: String,
   imageURL: String,
   description: String
 })

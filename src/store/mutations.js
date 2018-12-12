@@ -3,6 +3,9 @@ import {
   ALL_MEDIAS_SUCCESS,
   ALL_MEDIAS_FAILURE,
 
+  MEDIA_BY_ID,
+  MEDIA_BY_ID_SUCCESS,
+
   REMOVE_MEDIA,
   REMOVE_MEDIA_SUCCESS,
   REMOVE_MEDIA_FAILURE,
@@ -14,19 +17,24 @@ import {
 export const mediaMutations = {
   [ALL_MEDIAS] (state) {
     state.showAnimation = true
-    console.log(state.showAnimation)
   },
 
   [ALL_MEDIAS_SUCCESS] (state, medias) {
     state.showAnimation = false
-    console.log("all success")
-    console.log(medias)
     state.mediaList = medias
+  },
+
+  [MEDIA_BY_ID] (state) {
+    state.showAnimation = true
+  },
+
+  [MEDIA_BY_ID_SUCCESS] (state, media) {
+    state.showAnimation = false
+    state.thisMedia = media
   },
 
   [ALL_MEDIAS_FAILURE] (state) {
     state.showAnimation = true
-    console.log("all failure")
   },
 
   [REMOVE_MEDIA] (state) {

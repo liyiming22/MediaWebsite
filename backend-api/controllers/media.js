@@ -20,6 +20,7 @@ const mediaController = {
     const newMedia = new Media({
       _id: req.body._id,
       title: req.body.title,
+      mediaURL: req.body.mediaURL,
       imageURL: req.body.imageURL,
       description: req.body.description
     })
