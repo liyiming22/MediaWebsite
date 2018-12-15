@@ -12,7 +12,7 @@
       </div>
     </nav>
     <router-view></router-view>
-    <div class="overlay" v-show="true">
+    <div class="overlay" v-show="showAnimation">
       <div class="loading-spinner">
         <div class="dot dotOne"></div>
         <div class="dot dotTwo"></div>

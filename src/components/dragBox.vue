@@ -12,11 +12,10 @@
 <script>
 import { cos } from '../config'
 export default {
-  name: 'UploadPage',
+  name: 'dragBox',
   data () {
     return {
-      file: {},
-      model: {}
+      file: {}
     }
   },
   mounted () {
@@ -27,11 +26,6 @@ export default {
   },
   methods: {
     uploadFile (item) {
-      let thisTitle = item.name
-      this.model.title = thisTitle.slice(0, thisTitle.lastIndexOf('.'))
-      this.model.imageURL = "https://test-1257171958.cos.ap-shanghai.myqcloud.com/p2522880251.webp"
-      this.model.description = 'test description'
-      this.model._id = 9999
       const _this = this
       cos.putObject ({
         Bucket: 'test-1257171958',
@@ -39,12 +33,11 @@ export default {
         Key: item.name,
         Body: item,
         onProgress: function(progressData) {
-          console.log(JSON.stringify(progressData));
+          // console.log(JSON.stringify(progressData));
         }},
         function (err, data) {
-          _this.model.mediaURL = 'https://' + data.Location
-          console.log(_this.model)
-          _this.$store.dispatch('addMedia', _this.model)
+          const thisURI = 'https://' + data.Location
+          _this.$emit('uploadSuccess', item.name, thisURI)
         }
       )
     },
@@ -57,7 +50,6 @@ export default {
       event.preventDefault()
       const dt = event.dataTransfer
       this.file = dt.files[0]
-      // console.log(this.file)
       this.uploadFile(this.file)
     }
   }
