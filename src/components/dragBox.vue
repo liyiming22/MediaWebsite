@@ -1,10 +1,11 @@
 <template>
-  <div>
+  <div class="wrapper">
     <div class="dropbox" ref="dropboxDOM">
-      <div class="text-center">
+      <div class="text-center dragDescription">
         <i class="fas fa-cloud-upload-alt fa-5x" style="color: #39f"></i>
+        <h2>{{ dragTitle }}</h2>
+        <h2 v-if="file == {}" class="text-center">拖拽文件至此</h2>
       </div>
-      <h2 v-if="file == {}" class="text-center">拖拽文件至此</h2>
     </div>
   </div>
 </template>
@@ -13,6 +14,7 @@
 import { cos } from '../config'
 export default {
   name: 'dragBox',
+  props: ['dragTitle'],
   data () {
     return {
       file: {}
@@ -37,6 +39,7 @@ export default {
         }},
         function (err, data) {
           const thisURI = 'https://' + data.Location
+          console.log(_this.$store.showAnimation)
           _this.$emit('uploadSuccess', item.name, thisURI)
         }
       )
@@ -58,7 +61,18 @@ export default {
 
 <style scoped>
   .dropbox {
+      width: 100%;
+      height: 100%;
       border: 1px dashed #007bff;
       min-height: 5rem;
+  }
+
+  .wrapper {
+    width: 50%;
+    height: 300px;
+  }
+
+  .dragDescription {
+    margin-top: 75px;
   }
 </style>

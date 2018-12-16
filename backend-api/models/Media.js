@@ -5,8 +5,7 @@ const Schema = mongoose.Schema,
 
 //  创建Schema
 const mediaSchema = Schema({
-  // _id: ObjectId,
-  _id: String,
+  // _id: String,
   title: String,
   mediaURL: String,
   imageURL: String,
