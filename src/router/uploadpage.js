@@ -1,7 +1,7 @@
-import UploadPage from '@/views/UploadPage.vue'
+import Upload from '@/views/Upload.vue'
 
 export default {
   path: '/upload',
-  name: 'UploadPage',
-  component: UploadPage
+  name: 'Upload',
+  component: Upload
 }

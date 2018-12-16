@@ -7,12 +7,12 @@
           <li><router-link to="/upload"><i class="fas fa-cloud-upload-alt"></i>上传</router-link></li>
         </ul>
         <ul class="nav_right">
-          <li><router-link to="/"><i class="fas fa-star"></i>收藏夹</router-link></li>
+          <li><router-link to="/favorite"><i class="fas fa-star"></i>收藏夹</router-link></li>
         </ul>
       </div>
     </nav>
     <router-view></router-view>
-    <div class="overlay" v-show="true">
+    <div class="overlay" v-show="showAnimation">
       <div class="loading-spinner">
         <div class="dot dotOne"></div>
         <div class="dot dotTwo"></div>

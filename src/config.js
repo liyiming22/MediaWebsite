@@ -4,4 +4,5 @@ const cos = new COS({
   SecretKey: 'tZEgvxnQp1zkIdiX7QTGuIQIuFLBk38x'
 })
 const API_BASE = 'http://localhost:5000/api/mediaReq'
-export { API_BASE, cos }
+const mediaSet = new Set(['mp4', 'mkv', 'avi', '3gp', 'mp3', 'wav', 'rmvb'])
+export { API_BASE, cos, mediaSet }

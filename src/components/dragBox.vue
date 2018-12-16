@@ -1,10 +1,11 @@
 <template>
-  <div>
+  <div class="wrapper">
     <div class="dropbox" ref="dropboxDOM">
-      <div class="text-center">
+      <div class="text-center dragDescription">
         <i class="fas fa-cloud-upload-alt fa-5x" style="color: #39f"></i>
+        <h2>{{ dragTitle }}</h2>
+        <h2 v-if="file == {}" class="text-center">拖拽文件至此</h2>
       </div>
-      <h2 v-if="file == {}" class="text-center">拖拽文件至此</h2>
     </div>
   </div>
 </template>
@@ -12,11 +13,11 @@
 <script>
 import { cos } from '../config'
 export default {
-  name: 'UploadPage',
+  name: 'dragBox',
+  props: ['dragTitle'],
   data () {
     return {
-      file: {},
-      model: {}
+      file: {}
     }
   },
   mounted () {
@@ -27,11 +28,6 @@ export default {
   },
   methods: {
     uploadFile (item) {
-      let thisTitle = item.name
-      this.model.title = thisTitle.slice(0, thisTitle.lastIndexOf('.'))
-      this.model.imageURL = "https://test-1257171958.cos.ap-shanghai.myqcloud.com/p2522880251.webp"
-      this.model.description = 'test description'
-      this.model._id = 9999
       const _this = this
       cos.putObject ({
         Bucket: 'test-1257171958',
@@ -39,12 +35,12 @@ export default {
         Key: item.name,
         Body: item,
         onProgress: function(progressData) {
-          console.log(JSON.stringify(progressData));
+          // console.log(JSON.stringify(progressData));
         }},
         function (err, data) {
-          _this.model.mediaURL = 'https://' + data.Location
-          console.log(_this.model)
-          _this.$store.dispatch('addMedia', _this.model)
+          const thisURI = 'https://' + data.Location
+          console.log(_this.$store.showAnimation)
+          _this.$emit('uploadSuccess', item.name, thisURI)
         }
       )
     },
@@ -57,7 +53,6 @@ export default {
       event.preventDefault()
       const dt = event.dataTransfer
       this.file = dt.files[0]
-      // console.log(this.file)
       this.uploadFile(this.file)
     }
   }
@@ -66,7 +61,18 @@ export default {
 
 <style scoped>
   .dropbox {
+      width: 100%;
+      height: 100%;
       border: 1px dashed #007bff;
       min-height: 5rem;
+  }
+
+  .wrapper {
+    width: 50%;
+    height: 300px;
+  }
+
+  .dragDescription {
+    margin-top: 75px;
   }
 </style>
