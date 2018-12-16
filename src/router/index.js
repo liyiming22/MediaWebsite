@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HomeRoutes from './home'
 import UploadRoutes from './uploadpage'
 import DetailRoutes from './details'
+import FavoriteRoutes from './favorite'
 
 Vue.use(Router)
 
@@ -12,6 +13,7 @@ export default new Router({
   routes: [
     HomeRoutes,
     DetailRoutes,
-    UploadRoutes
+    UploadRoutes,
+    FavoriteRoutes
   ]
 })
