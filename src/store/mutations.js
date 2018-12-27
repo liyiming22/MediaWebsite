@@ -8,6 +8,7 @@ import {
 
   REMOVE_MEDIA,
   REMOVE_MEDIA_SUCCESS,
+  REMOVE_MEDIA_FAILURE,
 
   REMOVE_FROM_FAVORITE,
   ADD_TO_FAVORITE,
@@ -39,13 +40,15 @@ export const mediaMutations = {
     state.showAnimation = true
   },
 
-  [REMOVE_MEDIA]: (state) => {
-    console.log("remove")
+  [REMOVE_MEDIA]: (state, payload) => {
+    console.log("REMOVE_MEDIA")
+    state.showAnimation = true
   },
 
-  [REMOVE_MEDIA_SUCCESS]: (state, id) => {
-    const index = state.mediaList.findIndex(me => me._id === id)
-    console.log(index)
+  [REMOVE_MEDIA_SUCCESS]: (state, payload) => {
+    state.showAnimation = false
+    const index = state.mediaList.findIndex(temp => temp._id === payload)
+    console.log('index', index)
     state.mediaList.splice(index, 1)
   },
 

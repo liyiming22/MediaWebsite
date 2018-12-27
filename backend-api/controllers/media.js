@@ -16,7 +16,7 @@ const mediaController = {
 
   // create
   create (req, res) {
-    // 创建一个新的媒体对象
+
     const newMedia = new Media({
       _id: req.body._id,
       title: req.body.title,
@@ -24,13 +24,20 @@ const mediaController = {
       imageURL: req.body.imageURL,
       description: req.body.description
     })
-    // 存入数据库中
+
     newMedia.save()
             .then(media => res.json(media))
             .catch(err => console.log(err))
-  }
-  // update
+  },
+
   // remove
+  remove (req, res) {
+    const idParam = req.params.id
+    Media
+      .findOne({_id: idParam}).remove( (err, removed) => {
+        res.json(idParam)
+      })
+  }
 }
 
 module.exports = mediaController

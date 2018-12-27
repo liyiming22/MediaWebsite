@@ -9,7 +9,9 @@ import {
   MEDIA_BY_ID_SUCCESS,
 
   ADD_MEDIA,
-  ADD_MEDIA_SUCCESS
+  ADD_MEDIA_SUCCESS,
+  REMOVE_MEDIA,
+  REMOVE_MEDIA_SUCCESS
 }from './mutation-types'
 
 export const mediaActions = {
@@ -29,9 +31,17 @@ export const mediaActions = {
   },
 
   addMedia({commit}, newMedia) {
-    commit(ADD_MEDIA),
+    commit(ADD_MEDIA)
     axios.post(`${API_BASE}/medias`, newMedia).then(response => {
       commit(ADD_MEDIA_SUCCESS, response.data)
+    })
+  },
+
+  removeMedia({commit}, payload) {
+    commit(REMOVE_MEDIA)
+    axios.delete(`${API_BASE}/medias/${payload}`, payload).then(response => {
+      console.log('response', response.data)
+      commit(REMOVE_MEDIA_SUCCESS, response.data)
     })
   }
 }

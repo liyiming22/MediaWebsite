@@ -14,7 +14,9 @@ export default {
   props: ['media'],
   methods: {
     removeMedia (id) {
-      this.$store.commit('REMOVE_MEDIA_SUCCESS', id)
+      console.log(id)
+      this.$store.dispatch('removeMedia', id)
+      // this.$store.commit('REMOVE_MEDIA_SUCCESS', id)
     }
   }
 }
