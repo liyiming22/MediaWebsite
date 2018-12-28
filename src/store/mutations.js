@@ -8,13 +8,15 @@ import {
 
   REMOVE_MEDIA,
   REMOVE_MEDIA_SUCCESS,
-  REMOVE_MEDIA_FAILURE,
+  // REMOVE_MEDIA_FAILURE,
 
   REMOVE_FROM_FAVORITE,
   ADD_TO_FAVORITE,
 
   ADD_MEDIA,
-  ADD_MEDIA_SUCCESS
+  ADD_MEDIA_SUCCESS,
+
+  ERROR_MSG
 }from './mutation-types'
 
 export const mediaMutations = {
@@ -70,5 +72,7 @@ export const mediaMutations = {
     console.log(newMedia)
     state.showAnimation = false
     state.mediaList.push(newMedia)
-  }
+  },
+
+  [ERROR_MSG]: (state, payload) => {}
 }

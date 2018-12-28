@@ -23,12 +23,36 @@
 </template>
 
 <script>
+import toastr from 'toastr'
+import {
+  ERROR_MSG,
+  ADD_MEDIA_SUCCESS,
+  REMOVE_MEDIA_SUCCESS
+}from './store/mutation-types'
+
 export default {
   name: 'app',
   computed: {
     showAnimation () {
       return this.$store.state.showAnimation
     }
+  },
+  created () {
+    this.$store.subscribe((mutation) => {
+      if (mutation.payload) {
+        switch (mutation.type) {
+          case ERROR_MSG:
+            toastr.error(mutation.payload.content, mutation.payload.title)
+            break
+          case ADD_MEDIA_SUCCESS:
+            toastr.success('Media added.', 'Success!')
+            break
+          case REMOVE_MEDIA_SUCCESS:
+            toastr.warning('Media removed.', 'Removed!')
+            break
+        }
+      }
+    })
   }
 }
 </script>

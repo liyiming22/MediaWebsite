@@ -20,6 +20,11 @@ export default {
       file: {}
     }
   },
+  // computed: {
+  //   showAnimation () {
+  //     return this.$store.state.showAnimation
+  //   }
+  // },
   mounted () {
     let dropbox = this.$refs.dropboxDOM
     dropbox.addEventListener('dragenter', this.onDrag, false)
@@ -28,6 +33,8 @@ export default {
   },
   methods: {
     uploadFile (item) {
+      this.$store.showAnimation = true
+      console.log(this.$store.showAnimation)
       const _this = this
       cos.putObject ({
         Bucket: 'test-1257171958',
@@ -35,11 +42,14 @@ export default {
         Key: item.name,
         Body: item,
         onProgress: function(progressData) {
-          // console.log(JSON.stringify(progressData));
+          console.log(JSON.stringify(progressData));
+          console.log(_this.$store.state.showAnimation)
         }},
         function (err, data) {
           const thisURI = 'https://' + data.Location
-          console.log(_this.$store.showAnimation)
+          // console.log(_this.$store.showAnimation)
+          _this.$store.showAnimation = false
+          console.log(thisURI)
           _this.$emit('uploadSuccess', item.name, thisURI)
         }
       )

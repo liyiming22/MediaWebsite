@@ -21,6 +21,7 @@
 <script>
 import DragBox from '@/components/dragBox.vue'
 import { mediaSet } from '../config'
+import { ERROR_MSG } from '../store/mutation-types'
 export default {
   name: 'Upload',
   data () {
@@ -45,7 +46,13 @@ export default {
     },
     handleSave () {
       console.log(this.model)
-      this.$store.dispatch('addMedia', this.model)
+      if (this.model.mediaURL == '')
+        this.$store.commit(ERROR_MSG, {
+          type: 'error',
+          title: '没有任何媒体',
+          content: '请至少上传一个媒体文件再保存'
+        })
+      else  this.$store.dispatch('addMedia', this.model)
     }
   },
   components: {

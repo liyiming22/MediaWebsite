@@ -14,3 +14,6 @@ export const REMOVE_FROM_FAVORITE = 'REMOVE_FROM_FAVORITE'
 
 export const ADD_MEDIA = 'ADD_MEDIA'
 export const ADD_MEDIA_SUCCESS = 'ADD_MEDIA_SUCCESS'
+
+export const ERROR_MSG = 'ERROR_MSG'
+export const SUCCESS_MSG = 'SUCCESS_MSG'
